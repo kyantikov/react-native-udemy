@@ -12,23 +12,23 @@ const ComponentsScreen = () => {
     // can assign JSX elements to a variable, then show that variable inside of a JSX block
       // allows to create JSX conditionally, ahead-of-time (AoT)
 
-  const name = 'Fred';
-  const anotherElement = <Text style={styles.textStyle}>This text element exists as a variable.</Text>
+  const name = 'Kirill';
+  const anotherElement = <Text style={styles.headerTextStyle}>Getting started with React Native!</Text>
+
   return (
     <View>
-      <Text style={styles.headerTextStyle}>This is the components screen.</Text>
-      <Text>Hello {name}!</Text>
       {anotherElement}
+      <Text style={styles.textStyle}>My name is {name}!</Text>
     </View>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
   headerTextStyle: {
-    fontSize: 30
+    fontSize: 45
   },
   textStyle: {
-    fontSize: 22
+    fontSize: 20
   }
 });
 
