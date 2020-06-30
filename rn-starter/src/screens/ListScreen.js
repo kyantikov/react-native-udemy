@@ -35,16 +35,18 @@ const ListScreen = () => {
   // if defining keyExtractor function outside of JSX block, must return the field which you wish to make the 'key' of the item
   const petsListKeyExtractor = pet => { return pet.type };
 
-  const renderFriendsList = ({ item }) => {
-    return <Text>{ item.name }</Text>
-  };
   const renderPetsList = ({ item }) => {
     return <Text>{ item.type }</Text>
   }
 
   return (
     <View>
-      <FlatList data={friendsList} renderItem={renderFriendsList}/>
+      <FlatList
+        data={friendsList}
+        renderItem={ ({item}) => {
+          return <Text>{ item.name }</Text>
+        }}
+      />
       <Text style={styles.breakText}>Break</Text>
       <FlatList keyExtractor={petsListKeyExtractor} data={petsList} renderItem={renderPetsList}/>
     </View>
