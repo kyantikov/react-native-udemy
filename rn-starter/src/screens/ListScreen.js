@@ -42,12 +42,13 @@ const ListScreen = () => {
   return (
     <View>
       <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
         data={friendsList}
         renderItem={ ({item}) => {
-          return <Text>{ item.name }</Text>
+          return <Text style={styles.listText}>{ item.name }</Text>
         }}
       />
-      <Text style={styles.breakText}>Break</Text>
       <FlatList keyExtractor={petsListKeyExtractor} data={petsList} renderItem={renderPetsList}/>
     </View>
   );
@@ -56,6 +57,9 @@ const ListScreen = () => {
 const styles = StyleSheet.create({
   breakText: {
     fontSize: 40,
+  },
+  listText: {
+    marginVertical: 50
   }
 });
 
