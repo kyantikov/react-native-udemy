@@ -32,11 +32,27 @@ const ListScreen = () => {
     {type: 'hippo'},
   ];
 
+  // part of FlatList exercise
+  const friendsAgeList = [
+    {key: '1', name: 'Fred', age: 22},
+    {key: '2', name: 'Jeff', age: 10},
+    {key: '3', name: 'Karl', age: 15},
+    {key: '4', name: 'Hank', age: 34},
+    {key: '5', name: 'Todd', age: 69},
+    {key: '6', name: 'Alf', age: 50},
+  ];
+
+
   // if defining keyExtractor function outside of JSX block, must return the field which you wish to make the 'key' of the item
   const petsListKeyExtractor = pet => { return pet.type };
 
   const renderPetsList = ({ item }) => {
     return <Text>{ item.type }</Text>
+  }
+
+  const renderFriendsAgeList = ({item}) => {
+    console.log(item);
+
   }
 
   return (
@@ -49,7 +65,15 @@ const ListScreen = () => {
           return <Text style={styles.listText}>{ item.name }</Text>
         }}
       />
-      <FlatList keyExtractor={petsListKeyExtractor} data={petsList} renderItem={renderPetsList}/>
+      {/*<FlatList keyExtractor={petsListKeyExtractor} data={petsList} renderItem={renderPetsList}/>*/}
+      <FlatList
+        data={friendsAgeList}
+        renderItem={ ({item}) => {
+          return (
+            <Text style={styles.listText}>{ item.name } - Age { item.age }</Text>
+          );
+        }}
+      />
     </View>
   );
 };
@@ -59,7 +83,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
   },
   listText: {
-    marginVertical: 50
+    marginVertical: 30
   }
 });
 
