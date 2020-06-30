@@ -15,25 +15,46 @@ const ListScreen = () => {
       // rebuild from scratch based on the updated array
     // this is undesired behavior
   const friendsList = [
-    {name: 'Fred'},
-    {name: 'Jeff'},
-    {name: 'Karl'},
-    {name: 'Hank'},
-    {name: 'Todd'},
-    {name: 'Alf'},
+    {key: '1', name: 'Fred'},
+    {key: '2', name: 'Jeff'},
+    {key: '3', name: 'Karl'},
+    {key: '4', name: 'Hank'},
+    {key: '5', name: 'Todd'},
+    {key: '6', name: 'Alf'},
   ];
 
+  const petsList = [
+    {type: 'dog'},
+    {type: 'lizard'},
+    {type: 'giraffe'},
+    {type: 'rock'},
+    {type: 'i'},
+    {type: 'hippo'},
+  ];
+
+  // if defining keyExtractor function outside of JSX block, must return the field which you wish to make the 'key' of the item
+  const petsListKeyExtractor = pet => { return pet.type };
+
   const renderFriendsList = ({ item }) => {
-    return <Text>{item.name}</Text>
+    return <Text>{ item.name }</Text>
   };
+  const renderPetsList = ({ item }) => {
+    return <Text>{ item.type }</Text>
+  }
 
   return (
-    <FlatList data={friendsList} renderItem={renderFriendsList}></FlatList>
+    <View>
+      <FlatList data={friendsList} renderItem={renderFriendsList}/>
+      <Text style={styles.breakText}>Break</Text>
+      <FlatList keyExtractor={petsListKeyExtractor} data={petsList} renderItem={renderPetsList}/>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-
+  breakText: {
+    fontSize: 40,
+  }
 });
 
 export default ListScreen;
