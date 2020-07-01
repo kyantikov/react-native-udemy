@@ -7,9 +7,21 @@ import ImageDetail from "../components/ImageDetail";
 const ImageScreen = () => {
   return (
     <View>
-      <ImageDetail title="Lake" imageSource={ require('../../assets/lake.jpg') }/>
-      <ImageDetail title="City" imageSource={ require('../../assets/city.jpg') } />
-      <ImageDetail title="Mountain" imageSource={ require('../../assets/mountain.jpg') }/>
+      <ImageDetail
+        title="Lake"
+        imageSource={ require('../../assets/lake.jpg') }
+        score={10}
+      />
+      <ImageDetail
+        title="City"
+        imageSource={ require('../../assets/city.jpg') }
+        score={10}
+      />
+      <ImageDetail
+        title="Mountain"
+        imageSource={ require('../../assets/mountain.jpg') }
+        score={10}
+      />
     </View>
   );
 };

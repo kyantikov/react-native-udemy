@@ -7,14 +7,18 @@ const ImageDetail = (props) => {
 
   return (
     <View>
-      <Image source={ props.imageSource }></Image>
-      <Text>{props.title}</Text>
+      <Image source={ props.imageSource } style={styles.image}></Image>
+      <Text>{ props.title }</Text>
+      <Text>Image Score - { props.score }</Text>
     </View>
   )
 };
 
 const styles = StyleSheet.create({
-
+  image: {
+    height: 200,
+    width: 200
+  }
 });
 
 export default ImageDetail;
