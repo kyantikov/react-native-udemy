@@ -1,12 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 
 // this component is the child in reference to ImageScreen
 const ImageDetail = (props) => {
   console.log(props);
 
   return (
-    <Text>{props.title}</Text>
+    <View>
+      <Image source={ props.imageSource }></Image>
+      <Text>{props.title}</Text>
+    </View>
   )
 };
 

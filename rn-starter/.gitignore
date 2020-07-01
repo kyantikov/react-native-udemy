@@ -1,5 +1,6 @@
 node_modules/
 .expo/
+*.jpg
 
 # User-specific stuff:
 .idea/workspace.xml
