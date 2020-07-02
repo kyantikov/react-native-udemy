@@ -5,6 +5,12 @@ import HomeScreen from "./src/screens/HomeScreen";
 import ComponentsScreen from "./src/screens/ComponentsScreen";
 import ListScreen from "./src/screens/ListScreen";
 import ImageScreen from "./src/screens/ImageScreen";
+import CounterScreen from "./src/screens/CounterScreen";
+
+
+// props: system to pass data from the parent to a child
+// state: system to track a piece of data that will change over time.
+  // if that data changes, our app will rerender
 
 const navigator = createStackNavigator(
   {
@@ -12,6 +18,7 @@ const navigator = createStackNavigator(
     Components: ComponentsScreen,
     List: ListScreen,
     Image: ImageScreen,
+    Counter: CounterScreen,
   },
   {
     initialRouteName: "Home",
