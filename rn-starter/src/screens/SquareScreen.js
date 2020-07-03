@@ -27,18 +27,21 @@ const SquareScreen = () => {
   const [red, setRed] = useState(0);
   const [green, setGreen] = useState(0);
   const [blue, setBlue] = useState(0);
-
+  
   // to address the issue of incrementing/decrementing past accepted RGB values:
     // BAD -- add if statements to each onIncrease, onDecrease block ::: this would make the JSX very unreadable
     // GOOD -- create helper function which will determine whether incrementing/decrementing the color value will result in an invalid RGB value
   // ideally, the function will work for any/all ColorCounter components
   const setColor= (color, change) => {
-    if (color === 'red') {
-      if (red + change > 255 || red + change < 0) {
+    switch(color) {
+      case 'red':
+        return (red + change > 255 || red + change < 0) ? null : setRed(red + change);
+      case 'green':
+        return (green + change > 255 || blue + change < 0) ? null : setGreen(green + change);
+      case 'blue':
+        return (blue + change > 255 || blue + change < 0) ? null : setBlue(blue + change);
+      default:
         return;
-      } else {
-        setRed(red + change);
-      }
     }
   };
 
@@ -51,13 +54,13 @@ const SquareScreen = () => {
       />
       <ColorCounter
         color="Green"
-        onIncrease={ () => setBlue(blue + COLOR_INCREMENT) }
-        onDecrease={ () => setBlue(blue - COLOR_INCREMENT) }
+        onIncrease={ () => setColor('blue', COLOR_INCREMENT) }
+        onDecrease={ () => setColor('blue', -1 * COLOR_INCREMENT) }
       />
       <ColorCounter
         color="Blue"
-        onIncrease={ () => setGreen(green + COLOR_INCREMENT) }
-        onDecrease={ () => setGreen(green - COLOR_INCREMENT) }
+        onIncrease={ () => setColor('green', COLOR_INCREMENT) }
+        onDecrease={ () => setColor('green', -1 * COLOR_INCREMENT) }
       />
       <View style={{height: 200, width: 200, backgroundColor: `rgb(${red}, ${green}, ${blue})` }}/>
     </View>
