@@ -39,8 +39,9 @@ const SquareScreen = () => {
   // two technicalities
     // 1) never change Argument #1 directly (object w state values)
     // 2) must always return a value to be used as Argument #1
-  // ****
 
+  // <<<<<<< SEE ReducerSquareScreen FOR SOLUTION WITH A REDUCER >>>>>>>>
+  // ****
 
   const [red, setRed] = useState(0);
   const [green, setGreen] = useState(0);
