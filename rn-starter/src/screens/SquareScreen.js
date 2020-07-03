@@ -21,9 +21,16 @@ import ColorCounter from "../components/ColorCounter";
 // if a child component needs to CHANGE a state value, the parent can pass down a callback function to change the state value as a prop
 
 const SquareScreen = () => {
+  const [red, setRed] = useState(0);
+  const [green, setGreen] = useState(0);
+  const [blue, setBlue] = useState(0);
+  
   return (
     <View>
-      <ColorCounter color="Red" />
+      <ColorCounter
+        onIncrease={ () => setRed(red + 2) }
+        onDecrease={ () => setRed(red - 2) }
+        color="Red" />
       <ColorCounter color="Green" />
       <ColorCounter color="Blue" />
     </View>
