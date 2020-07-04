@@ -9,6 +9,7 @@ import CounterScreen from "./src/screens/CounterScreen";
 import ColorScreen from "./src/screens/ColorScreen";
 import SquareScreen from "./src/screens/SquareScreen";
 import ReducerSquareScreen from "./src/screens/ReducerSquareScreen";
+import ReducerCounterScreen from "./src/screens/ReducerCounterScreen";
 
 
 // props: system to pass data from the parent to a child
@@ -24,7 +25,8 @@ const navigator = createStackNavigator(
     Counter: CounterScreen,
     Color: ColorScreen,
     Square: SquareScreen,
-    Reducer: ReducerSquareScreen,
+    ReducerSquare: ReducerSquareScreen,
+    ReducerCounter: ReducerCounterScreen,
   },
   {
     initialRouteName: "Home",
