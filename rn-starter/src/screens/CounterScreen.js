@@ -27,9 +27,9 @@ import { View, Text, StyleSheet, Button } from "react-native";
   // if there are multiple instances of a component that use state, they will each have their own separate, independent state variables -- they will not be not be shared
 
 const CounterScreen = () => {
-  // imp) not the correct way to implement state
-  // React does not magically watch variables
   // let counter = 0; (this along with using onPress prop to attempt to increment this variable)
+  // not the correct way to implement state
+  // React does not magically watch variables
 
   // hooks are functions that add new functionality to a functional component <----- LOL!
   // useState: hook
