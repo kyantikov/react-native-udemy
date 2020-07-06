@@ -13,18 +13,18 @@ const BoxScreen = () => {
       <View style={styles.textView}>
         <Text style={styles.demoText}>flexDirection: 'column' DEMO</Text>
         <View style={styles.flexColumnView}>
-          <Text style={styles.flexText}>Child #1</Text>
-          <Text style={styles.flexText}>Child #2</Text>
-          <Text style={styles.flexText}>Child #3</Text>
+          <Text style={styles.flexOneText}>Child #1</Text>
+          <Text style={styles.flexTwoText}>Child #2</Text>
+          <Text style={styles.flexThreeText}>Child #3</Text>
         </View>
       </View>
 
        <View style={styles.textView}>
         <Text style={styles.demoText}>flexDirection: 'row' DEMO</Text>
         <View style={styles.flexRowView}>
-          <Text style={styles.flexText}>Child #1</Text>
-          <Text style={styles.flexText}>Child #2</Text>
-          <Text style={styles.flexText}>Child #3</Text>
+          <Text style={styles.flexOneText}>Child #1</Text>
+          <Text style={styles.flexTwoText}>Child #2</Text>
+          <Text style={styles.flexThreeText}>Child #3</Text>
         </View>
       </View>
 
@@ -61,12 +61,13 @@ const styles = StyleSheet.create({
     // there are certain properties which affect how siblings are positioned in a common parent:
 
       // alignItems ::: affects how children are situated horizontally
-        // property set on parent element (here, flexView)
+        // property set on PARENT element
         // default: 'stretch' (children fill up as much HORIZONTAL space as possible)
         // 'flex-start' | 'center' | 'flex-end'
         // primary axis changes depending on flexDirection property
 
       // flexDirection ::: determines whether children are laid out vertically or horizontally ('column', 'row')
+        // property set on PARENT element
         // default: 'column' (will fill up as much VERTICAL space as possible)
         // imp! flexDirection affects behavior of alignItems AND justifyContent --- changes primary and secondary axis
           // alignItems
@@ -77,26 +78,44 @@ const styles = StyleSheet.create({
             // 'row': works on horizontal axis
 
       // justifyContent ::: affects how children are situated vertically
-        // property set on parent element (here, flexView)
+        // property set on PARENT element
         // default: 'flex-start' (children are pushed up to top of container)
         // 'center' | 'flex-end' | 'space-between' | 'space-around'
         // primary axis changes depending on flexDirection property
+
+      // flex ::: makes a child in parent try take up as much space as possible (depending on the set flexDirection)
+        // property set on a CHILD element
+        // multiple children inside of one parent can have the flex property assigned
+        // flex can be assigned values greater than 1
+          // this will proportionately size the child components within the parent
+            // 4 + 4 + 2 = 10 'sections'
+            // (imagine that parent gets split into ten equal sections)
+              // flexOne, flexTwo each get 40% of available space, while flexThree gets 20% of available space
   flexColumnView: {
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
     height: 150,
   },
   flexRowView: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     alignItems: 'center',
     height: 150,
   },
-  flexText: {
-    // marginVertical: 5,
+  flexOneText: {
     borderWidth: 3,
     borderColor: 'red',
-    // padding: 10,
+    flex: 4,
+  },
+  flexTwoText: {
+    borderWidth: 3,
+    borderColor: 'red',
+    flex: 4,
+  },
+  flexThreeText: {
+    borderWidth: 3,
+    borderColor: 'red',
+    flex: 2,
   }
 });
 
