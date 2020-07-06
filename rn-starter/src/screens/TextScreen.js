@@ -3,20 +3,23 @@ import { View, StyleSheet, Text, TextInput } from "react-native";
 
 const TextScreen = () => {
 
-  const [name, setName] = useState('Karl');
+  const [password, setPassword] = useState('');
 
   // the TextInput shown here will essentially be the base of mose TextInput fields that are created for your projects
   return (
     <View>
-      <Text style={{ fontSize: 25, textAlign: 'center' }}>Enter Name: </Text>
+      <Text style={{ fontSize: 25, textAlign: 'center' }}>Enter Password: </Text>
       <TextInput
         style={ styles.input }
         autoCapitalize="none" // iOS applies auto-correct/auto-capitalize by default
         autoCorrect={false} // these props prevents that behavior from TextInput fields that do not need it: email/username/password
-        value={name}
-        onChangeText={ (inputValue) => setName(inputValue) }
+        value={password}
+        onChangeText={ (inputValue) => setPassword(inputValue) }
       />
-      <Text style={{ textAlign: 'center' }}>My name is {name}</Text>
+      {password.length <= 5
+        ? <Text style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Password must be longer than 5 characters.</Text>
+        : null
+      }
     </View>
   );
 };
