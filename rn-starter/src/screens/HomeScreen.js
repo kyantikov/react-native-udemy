@@ -39,6 +39,10 @@ const HomeScreen = ({ navigation }) => {
       title="Go to Reducer Counter Demo"
       onPress={ () =>  navigation.navigate('ReducerCounter') }
       />
+      <Button
+      title="Go to Text Input Demo"
+      onPress={ () =>  navigation.navigate('Text') }
+      />
     </View>
   );
 };
