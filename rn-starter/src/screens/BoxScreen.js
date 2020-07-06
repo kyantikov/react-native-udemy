@@ -6,10 +6,12 @@ const BoxScreen = () => {
     <View style={styles.container}>
 
       <View style={styles.textView}>
+          <Text style={styles.demoText}>BOX OBJECT MODEL DEMO</Text>
         <Text style={styles.bomText}>Box Screen</Text>
       </View>
 
       <View style={styles.textView}>
+        <Text style={styles.demoText}>FLEX DEMO</Text>
         <View style={styles.flexView}>
           <Text style={styles.flexText}>Child #1</Text>
           <Text style={styles.flexText}>Child #2</Text>
@@ -28,6 +30,11 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: 'black'
   },
+  demoText: {
+    fontSize: 20,
+    textAlign: 'center',
+    color: 'red'
+  },
   textView: {
     borderWidth: 1,
     borderColor: 'blue',
@@ -43,18 +50,27 @@ const styles = StyleSheet.create({
   // Flex Box refers to how some number of sibling elements get laid out inside a parent
     // use this to position multiple elements with a common parent
     // there are certain properties which affect how siblings are positioned in a common parent:
+
       // alignItems ::: affects how children are situated horizontally
         // property set on parent element (here, the View)
-        // default: 'stretch' (fill up as much horizontal space as possible)
+        // default: 'stretch' (fill up as much HORIZONTAL space as possible)
         // 'flex-start' | 'center' | 'flex-end'
+
+      // flexDirection ::: determines whether children are laid out vertically or horizontally ('column', 'row')
+        // default: 'column' (will fill up as much VERTICAL space as possible)
+        // imp! flexDirection affects behavior of alignItems --- changes primary and secondary axis
+          // 'column': alignItems works on the horizontal axis
+          // 'row': alignItems works on the vertical axis
   flexView: {
+    flexDirection: 'row',
     alignItems: 'center',
+    height: 200,
   },
   flexText: {
     marginVertical: 5,
     borderWidth: 3,
     borderColor: 'red',
-    padding: 10,
+    // padding: 10,
   }
 });
 
