@@ -85,37 +85,47 @@ const styles = StyleSheet.create({
 
       // flex ::: makes a child in parent try take up as much space as possible (depending on the set flexDirection)
         // property set on a CHILD element
+        // integer values
         // multiple children inside of one parent can have the flex property assigned
         // flex can be assigned values greater than 1
           // this will proportionately size the child components within the parent
             // 4 + 4 + 2 = 10 'sections'
             // (imagine that parent gets split into ten equal sections)
-              // flexOne, flexTwo each get 40% of available space, while flexThree gets 20% of available space
+              // flexOne, flexTwo each get 40% of available space, while flexThree gets 20% of available space'
+
+      // alignSelf ::: essentially overrides the alignItems property on the parent element
+        // property set on CHILD element
+        // 'auto' | 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
+
+
   flexColumnView: {
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    // alignItems: 'center',
+    // justifyContent: 'flex-start',
     height: 150,
   },
   flexRowView: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
     height: 150,
   },
   flexOneText: {
     borderWidth: 3,
     borderColor: 'red',
-    flex: 4,
+    // flex: 4,
+    alignSelf: 'center',
   },
   flexTwoText: {
     borderWidth: 3,
     borderColor: 'red',
-    flex: 4,
+    // flex: 4,
+    alignSelf: 'stretch',
   },
   flexThreeText: {
     borderWidth: 3,
     borderColor: 'red',
-    flex: 2,
+    // flex: 2,
+    alignSelf: 'center',
   }
 });
 
