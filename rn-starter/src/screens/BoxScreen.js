@@ -11,8 +11,17 @@ const BoxScreen = () => {
       </View>
 
       <View style={styles.textView}>
-        <Text style={styles.demoText}>FLEX DEMO</Text>
-        <View style={styles.flexView}>
+        <Text style={styles.demoText}>flexDirection: 'column' DEMO</Text>
+        <View style={styles.flexColumnView}>
+          <Text style={styles.flexText}>Child #1</Text>
+          <Text style={styles.flexText}>Child #2</Text>
+          <Text style={styles.flexText}>Child #3</Text>
+        </View>
+      </View>
+
+       <View style={styles.textView}>
+        <Text style={styles.demoText}>flexDirection: 'row' DEMO</Text>
+        <View style={styles.flexRowView}>
           <Text style={styles.flexText}>Child #1</Text>
           <Text style={styles.flexText}>Child #2</Text>
           <Text style={styles.flexText}>Child #3</Text>
@@ -52,22 +61,39 @@ const styles = StyleSheet.create({
     // there are certain properties which affect how siblings are positioned in a common parent:
 
       // alignItems ::: affects how children are situated horizontally
-        // property set on parent element (here, the View)
-        // default: 'stretch' (fill up as much HORIZONTAL space as possible)
+        // property set on parent element (here, flexView)
+        // default: 'stretch' (children fill up as much HORIZONTAL space as possible)
         // 'flex-start' | 'center' | 'flex-end'
+        // primary axis changes depending on flexDirection property
 
       // flexDirection ::: determines whether children are laid out vertically or horizontally ('column', 'row')
         // default: 'column' (will fill up as much VERTICAL space as possible)
-        // imp! flexDirection affects behavior of alignItems --- changes primary and secondary axis
-          // 'column': alignItems works on the horizontal axis
-          // 'row': alignItems works on the vertical axis
-  flexView: {
-    flexDirection: 'row',
+        // imp! flexDirection affects behavior of alignItems AND justifyContent --- changes primary and secondary axis
+          // alignItems
+            // 'column': works on horizontal axis
+            // 'row': works on vertical axis
+          // justifyContent
+            // 'column': works on vertical axis
+            // 'row': works on horizontal axis
+
+      // justifyContent ::: affects how children are situated vertically
+        // property set on parent element (here, flexView)
+        // default: 'flex-start' (children are pushed up to top of container)
+        // 'center' | 'flex-end' | 'space-between' | 'space-around'
+        // primary axis changes depending on flexDirection property
+  flexColumnView: {
     alignItems: 'center',
-    height: 200,
+    justifyContent: 'space-around',
+    height: 150,
+  },
+  flexRowView: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    height: 150,
   },
   flexText: {
-    marginVertical: 5,
+    // marginVertical: 5,
     borderWidth: 3,
     borderColor: 'red',
     // padding: 10,
