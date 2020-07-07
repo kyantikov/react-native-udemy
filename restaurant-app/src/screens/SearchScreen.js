@@ -1,9 +1,12 @@
-import React, {useState} from "react";
-import {StyleSheet, Text, View} from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View } from "react-native";
 
 import yelp from '../api/yelp';
 import SearchBar from "../components/SearchBar";
 
+// useEffect( () => {} ) ---> run arrow function every time the component is rendered
+// useEffect( () => {}, [] ) ---> run arrow function ONLY when the component is FIRST rendered
+// useEffect( () => {}, [value] ) ---> run arrow function when component is FIRST rendered AND whenever value(s) in the array changes
 
 const SearchScreen = () => {
 
@@ -34,7 +37,11 @@ const SearchScreen = () => {
 
   // based on the flow of component, once its rendered it comes here and hits searchYelpApi method
   // then, since the state is updated w/i searchYelpApi, the component is rerendered
-  // CAN EASILY INFINITELY LOOP 
+  // CAN EASILY INFINITELY LOOP
+
+  useEffect( () => {
+    searchYelpApi('pasta');
+  }, []);
 
   return (
     <View style={styles.containerStyle}>
