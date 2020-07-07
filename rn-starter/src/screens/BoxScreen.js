@@ -19,11 +19,20 @@ const BoxScreen = () => {
         </View>
       </View>
 
-       <View style={styles.textView}>
+      <View style={styles.textView}>
         <Text style={styles.demoText}>flexDirection: 'row' DEMO</Text>
         <View style={styles.flexRowView}>
           <Text style={styles.flexOneText}>Child #1</Text>
           <Text style={styles.flexTwoText}>Child #2</Text>
+          <Text style={styles.flexThreeText}>Child #3</Text>
+        </View>
+      </View>
+
+      <View style={styles.textView}>
+        <Text style={styles.demoText}>Absolute Fill DEMO</Text>
+        <View style={styles.absoluteFillView}>
+          <Text style={styles.flexOneText}>Child #1</Text>
+          <Text style={styles.absoluteFillText}>Child #2</Text>
           <Text style={styles.flexThreeText}>Child #3</Text>
         </View>
       </View>
@@ -59,13 +68,13 @@ const styles = StyleSheet.create({
   flexColumnView: {
     alignItems: 'center',
     // justifyContent: 'flex-start',
-    height: 150,
+    height: 100,
   },
   flexRowView: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    height: 150,
+    height: 100,
   },
   flexOneText: {
     borderWidth: 3,
@@ -87,8 +96,22 @@ const styles = StyleSheet.create({
     borderColor: 'red',
     // flex: 2,
     // alignSelf: 'center',
-  }
+  },
 
+  absoluteFillView: {
+    height: 150,
+  },
+  absoluteFillText: {
+    borderWidth: 3,
+    borderColor: 'red',
+    backgroundColor: 'red',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    // ...StyleSheet.absoluteFillObject, // achieves same result as above 5 lines
+  }
 });
 
 export default BoxScreen;
