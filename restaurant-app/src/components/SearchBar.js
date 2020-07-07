@@ -5,24 +5,32 @@ import { Ionicons } from '@expo/vector-icons';
 
 const SearchBar = () => {
   return (
-    <View style={styles.background}>
-      <View>
-        <Ionicons name="ios-search" size={30} color="black" />
-      </View>
+    <View style={styles.backgroundStyle}>
+      <Ionicons style={styles.iconStyle} name="ios-search"  />
+      <TextInput
+        style={styles.searchInputStyle}
+        placeholder="Search"
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  background: {
+  backgroundStyle: {
     backgroundColor: '#e8e6e6',
     height: 45,
-    width: 'auto',
     borderRadius: 5,
+    flexDirection: 'row',
   },
-
-  searchInput: {
-
+  iconStyle: {
+    fontSize: 35,
+    alignSelf: 'center',
+    marginHorizontal: 9,
+    marginTop: 2,
+  },
+  searchInputStyle: {
+    fontSize: 17,
+    flex: 1,
   },
 });
 
