@@ -52,3 +52,17 @@ see TextScreen.js for implementations
 - Top, Bottom, Left, Right work similar to margin except they are applied after the screen has been rendered
   - once screen renders, React goes back and applies the defined amount of space for each property on an element
   - this will make it appear as though an element is 'overlaying' another
+
+- steps to styling each element we wish to render on the screen
+  1.) apply Box Object Model rules
+    - border, margin, padding
+  2.) consider Position property of the element in its context
+    - if 'relative' ::: follow step 3
+    - if 'absolute' ::: follow step 4
+  3.)
+    a) apply all flex box rules, considering siblings
+    b) place element inside parent
+    c) apply top, left, bottom, right
+  4.)
+    a) apply all flex box rules, ignoring siblings
+    b) apply top, left, bottom, right

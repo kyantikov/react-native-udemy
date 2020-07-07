@@ -6,7 +6,7 @@ const BoxScreen = () => {
     <View style={styles.container}>
 
       <View style={styles.textView}>
-          <Text style={styles.demoText}>BOX OBJECT MODEL DEMO</Text>
+          <Text style={styles.demoText}>Box Object Model DEMO</Text>
         <Text style={styles.bomText}>Box Screen</Text>
       </View>
 
@@ -37,6 +37,15 @@ const BoxScreen = () => {
         </View>
       </View>
 
+      <View style={styles.exerciseContainer}>
+        <Text style={styles.demoText}>Layout Exercise</Text>
+        <View style={styles.exerciseView}>
+          <View style={styles.exerciseBoxOne}/>
+          <View style={styles.exerciseBoxTwo}/>
+          <View style={styles.exerciseBoxThree}/>
+        </View>
+      </View>
+
     </View>
   );
 };
@@ -48,7 +57,7 @@ const styles = StyleSheet.create({
     borderColor: 'black'
   },
   demoText: {
-    fontSize: 20,
+    fontSize: 17,
     textAlign: 'center',
     color: 'red'
   },
@@ -99,7 +108,7 @@ const styles = StyleSheet.create({
   },
 
   absoluteFillView: {
-    height: 150,
+    height: 100,
   },
   absoluteFillText: {
     borderWidth: 3,
@@ -111,7 +120,36 @@ const styles = StyleSheet.create({
     right: 0,
     left: 0,
     // ...StyleSheet.absoluteFillObject, // achieves same result as above 5 lines
+  },
+
+  exerciseContainer: {
+    borderWidth: 3,
+    borderColor: 'blue',
+    marginVertical: 10,
+  },
+  exerciseView: {
+    height: 100,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  exerciseBoxOne: {
+    height: 50,
+    width: 80,
+    backgroundColor: 'rgba(100, 0, 0, 0.5)'
+  },
+  exerciseBoxTwo: {
+    height: 50,
+    width: 80,
+    backgroundColor: 'rgba(0, 100, 0, 0.5)',
+    // top: 50
+    alignSelf: 'flex-end',
+  },
+  exerciseBoxThree: {
+    height: 50,
+    width: 80,
+    backgroundColor: 'rgba(0, 0, 100, 0.5)'
   }
+
 });
 
 export default BoxScreen;
