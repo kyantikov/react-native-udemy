@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, TextInput } from "react-native";
 
 import { Ionicons } from '@expo/vector-icons';
 
-const SearchBar = () => {
+const SearchBar = ({ input, onInputChange, onInputSubmit }) => {
   return (
     <View style={styles.backgroundStyle}>
-      <Ionicons style={styles.iconStyle} name="ios-search"  />
+
+      <Ionicons style={styles.iconStyle} name="ios-search" />
       <TextInput
         style={styles.searchInputStyle}
         placeholder="Search"
+        autoCapitalize="none"
+        autoCorrect={false}
+        value={input}
+        onChangeText={ userInput => onInputChange(userInput) }
+        onEndEditing={ () => console.log('submitted') }
       />
+
     </View>
   );
 };
