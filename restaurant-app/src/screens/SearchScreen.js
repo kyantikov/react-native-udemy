@@ -11,12 +11,13 @@ const SearchScreen = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const searchYelpApi = async () => {
+  const searchYelpApi = async (userSearchTerm) => {
+    console.log('Hi theres!!!');
     try{
       const response = await yelp.get('/search', {
         params: {
           limit: 50,
-          term: searchResult,
+          term: userSearchTerm,
           location: 'chicago',
         }
       });
@@ -28,13 +29,20 @@ const SearchScreen = () => {
     }
   };
 
+  // DO NOT DO THIS!! BAD CODE!!
+  // searchYelpApi('pasta'); // calls searchYelpApi when component is first rendered
+
+  // based on the flow of component, once its rendered it comes here and hits searchYelpApi method
+  // then, since the state is updated w/i searchYelpApi, the component is rerendered
+  // CAN EASILY INFINITELY LOOP 
+
   return (
     <View style={styles.containerStyle}>
       <SearchBar
         input={input}
          // alternative method of calling functions in JSX (must be simple)
         onInputChange={setInput} // === { userInput => setInput(userInput) }
-        onInputSubmit={searchYelpApi} // === { () => searchYelpApi() }
+        onInputSubmit={ () => searchYelpApi(input) } // === { () => searchYelpApi() }
       />
       {errorMessage
         ? <Text style={styles.errorMessageStyle}>{errorMessage}</Text>
