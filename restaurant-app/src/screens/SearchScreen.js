@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import useSearchResults from "../hooks/useSearchResults";
 
 import SearchBar from "../components/SearchBar";
+import ResultsLists from "../components/ResultsLists";
 
 // useEffect( () => {} ) ---> run arrow function every time the component is rendered
 // useEffect( () => {}, [] ) ---> run arrow function ONLY when the component is FIRST rendered
@@ -16,7 +17,6 @@ const SearchScreen = () => {
 
   return (
     <View style={styles.containerStyle}>
-
       <SearchBar
         input={input}
          // alternative method of calling functions in JSX (must be simple)
@@ -28,6 +28,9 @@ const SearchScreen = () => {
         : <Text>We have found {searchResult.length} results.</Text>
       }
 
+      <ResultsLists title="Cost Effective" />
+      <ResultsLists title="Bit Pricier" />
+      <ResultsLists title="Big Spender" />
     </View>
   );
 };
