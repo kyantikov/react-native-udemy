@@ -15,7 +15,7 @@ const SearchBar = ({ input, onInputChange, onInputSubmit }) => {
         autoCorrect={false}
         value={input}
         onChangeText={ userInput => onInputChange(userInput) }
-        onEndEditing={ () => console.log('submitted') }
+        onEndEditing={ () => onInputSubmit() }
       />
 
     </View>
