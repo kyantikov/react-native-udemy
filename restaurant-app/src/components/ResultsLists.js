@@ -6,6 +6,19 @@ import { withNavigation } from "react-navigation";
 import ResultsDetail from "./ResultsDetail";
 
 const ResultsList = ({ title, results, navigation }) => {
+  const renderOptions = ({ item }) => {
+    const { id, name } = item;
+    const navParams = {
+      id: id,
+      name: name,
+    };
+    return (
+      <TouchableOpacity onPress={ () => navigation.navigate("ResultsShow", navParams) }>
+        <ResultsDetail result={item}/>
+      </TouchableOpacity>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.titleStyle}>{title}</Text>
@@ -14,13 +27,7 @@ const ResultsList = ({ title, results, navigation }) => {
         showsHorizontalScrollIndicator={false}
         data={results}
         keyExtractor={ result => result.id }
-        renderItem={ ({ item }) => {
-          return (
-            <TouchableOpacity onPress={ () => navigation.navigate("ResultsShow") }>
-              <ResultsDetail result={item}/>
-            </TouchableOpacity>
-          );
-        } }
+        renderItem={renderOptions}
       />
     </View>
   );
