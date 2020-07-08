@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 
 import useSearchResults from "../hooks/useSearchResults";
 
@@ -22,7 +22,7 @@ const SearchScreen = () => {
   };
 
   return (
-    <View style={styles.containerStyle}>
+    <>
       <SearchBar
         input={input}
          // alternative method of calling functions in JSX (must be simple)
@@ -33,11 +33,12 @@ const SearchScreen = () => {
         ? <Text style={styles.errorMessageStyle}>{errorMessage}</Text>
         : <Text style={styles.resultsMessageStyle}>Found {searchResult.length} results!</Text>
       }
-
-      <ResultsLists results={filterResultsByPrice('$')} title="Cost Effective" />
-      <ResultsLists results={filterResultsByPrice('$$')} title="Bit Pricier" />
-      <ResultsLists results={filterResultsByPrice('$$$')} title="Big Spender" />
-    </View>
+      <ScrollView>
+        <ResultsLists results={filterResultsByPrice('$')} title="Cost Effective" />
+        <ResultsLists results={filterResultsByPrice('$$')} title="Bit Pricier" />
+        <ResultsLists results={filterResultsByPrice('$$$')} title="Big Spender" />
+      </ScrollView>
+    </>
   );
 };
 
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
   resultsMessageStyle: {
     color: 'green',
     alignSelf: 'center',
+    marginVertical: 2,
   }
 });
 
