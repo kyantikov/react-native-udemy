@@ -34,9 +34,18 @@ const SearchScreen = () => {
         : <Text style={styles.resultsMessageStyle}>Found {searchResult.length} results!</Text>
       }
       <ScrollView>
-        <ResultsLists results={filterResultsByPrice('$')} title="Cost Effective" />
-        <ResultsLists results={filterResultsByPrice('$$')} title="Bit Pricier" />
-        <ResultsLists results={filterResultsByPrice('$$$')} title="Big Spender" />
+        <ResultsLists
+          title="Cost Effective"
+          results={filterResultsByPrice('$')}
+        />
+        <ResultsLists
+          title="Bit Pricier"
+          results={filterResultsByPrice('$$')}
+        />
+        <ResultsLists
+          title="Big Spender"
+          results={filterResultsByPrice('$$$')}
+        />
       </ScrollView>
     </>
   );

@@ -1,9 +1,11 @@
 import React from "react";
-import { View, StyleSheet, FlatList, Text } from "react-native";
+import { View, StyleSheet, FlatList, Text, TouchableOpacity } from "react-native";
+
+import { withNavigation } from "react-navigation";
 
 import ResultsDetail from "./ResultsDetail";
 
-const ResultsList = ({ title, results }) => {
+const ResultsList = ({ title, results, navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.titleStyle}>{title}</Text>
@@ -13,7 +15,11 @@ const ResultsList = ({ title, results }) => {
         data={results}
         keyExtractor={ result => result.id }
         renderItem={ ({ item }) => {
-          return <ResultsDetail result={item} />
+          return (
+            <TouchableOpacity onPress={ () => navigation.navigate("ResultsShow") }>
+              <ResultsDetail result={item}/>
+            </TouchableOpacity>
+          );
         } }
       />
     </View>
@@ -32,4 +38,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ResultsList;
+// high order component from 'react-navigation' that enables the component passed through it to have access the navigation prop
+  // high order component ::: function that takes a component and returns a new component
+    // useful when you cannot pass navigation prop to component directly OR
+    // dont want to pass it in the case of a deeply nest child
+export default withNavigation(ResultsList);
