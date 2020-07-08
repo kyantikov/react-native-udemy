@@ -31,7 +31,7 @@ const SearchScreen = () => {
       />
       {errorMessage
         ? <Text style={styles.errorMessageStyle}>{errorMessage}</Text>
-        : <Text>We have found {searchResult.length} results.</Text>
+        : <Text style={styles.resultsMessageStyle}>Found {searchResult.length} results!</Text>
       }
 
       <ResultsLists results={filterResultsByPrice('$')} title="Cost Effective" />
@@ -42,13 +42,14 @@ const SearchScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  containerStyle: {
-    padding: 10,
-  },
   errorMessageStyle: {
     color: 'red',
     fontWeight: 'bold',
     alignSelf: 'center'
+  },
+  resultsMessageStyle: {
+    color: 'green',
+    alignSelf: 'center',
   }
 });
 
