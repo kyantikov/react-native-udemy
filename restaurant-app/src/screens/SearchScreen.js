@@ -15,6 +15,12 @@ const SearchScreen = () => {
   const [input, setInput] = useState('');
   const [searchYelpApi, searchResult, errorMessage] = useSearchResults();
 
+  const filterResultsByPrice = (price) => {
+    return searchResult.filter(result => {
+      return result.price === price;
+    });
+  };
+
   return (
     <View style={styles.containerStyle}>
       <SearchBar
@@ -28,9 +34,9 @@ const SearchScreen = () => {
         : <Text>We have found {searchResult.length} results.</Text>
       }
 
-      <ResultsLists title="Cost Effective" />
-      <ResultsLists title="Bit Pricier" />
-      <ResultsLists title="Big Spender" />
+      <ResultsLists results={filterResultsByPrice('$')} title="Cost Effective" />
+      <ResultsLists results={filterResultsByPrice('$$')} title="Bit Pricier" />
+      <ResultsLists results={filterResultsByPrice('$$$')} title="Big Spender" />
     </View>
   );
 };
