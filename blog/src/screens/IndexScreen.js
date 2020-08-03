@@ -7,7 +7,7 @@ import { Context } from "../context/BlogContext";
 
 const IndexScreen = ({ navigation }) => {
   // useContext looks at Context object and access value inside of it
-  const { state, addBlogPost, deleteBlogPost } = useContext(Context);
+  const { state, deleteBlogPost } = useContext(Context);
 
   return (
     <View>
