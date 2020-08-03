@@ -1,17 +1,42 @@
-import React, { useReducer } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import {exp} from "react-native-reanimated";
+import React, { useContext, useState } from "react";
+import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 
 const CreateScreen = () => {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+
   return (
     <View>
-      <Text>Create Screen</Text>
+      <Text style={styles.label}>Enter Title:</Text>
+      <TextInput
+        style={styles.input}
+        value={title}
+        onChangeText={ text => setTitle(text) }
+      />
+      <Text style={styles.label}>Enter Content:</Text>
+      <TextInput
+        style={styles.input}
+        value={content}
+        onChangeText={ text => setContent(text) }
+      />
+      <Button title="Add Blog Post" onPress={ () => console.log('adding blog post') } />
     </View>
   )
 };
 
 const styles = StyleSheet.create({
-
+  label: {
+    fontSize: 20,
+    marginVertical: 5,
+    textAlign: 'center',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: 'black',
+    marginBottom: 15,
+    padding: 5,
+    margin: 5,
+  }
 });
 
 export default CreateScreen;
