@@ -24,12 +24,15 @@ const deleteBlogPost = (dispatch) => {
   return (blogId) => {
     dispatch({ type: 'delete_blog_post', payload: blogId })
   }
-}
+};
 
 export const { Context, Provider } = createDataContext(
   blogReducer,
   { addBlogPost, deleteBlogPost },
-  []);
+  []
+);
+
+
 // const BlogContext = React.createContext();
 
 // using 'children' prop provides the BlogContext with any child components that it contains
