@@ -1,29 +1,30 @@
 import React, { useContext } from "react";
-import { View, Text, StyleSheet, FlatList, Button } from "react-native";
+import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from "react-native";
 import { Feather } from '@expo/vector-icons'
 
 import { Context } from "../context/BlogContext";
 
-const renderBlogList = ({ item }) => {
-  return (
-    <View style={styles.row}>
-      <Text style={styles.title}>{item.title}</Text>
-      <Feather name="trash" style={styles.icon}/>
-    </View>
-  )
-};
 
 const IndexScreen = () => {
   // useContext looks at Context object and access value inside of it
-  const { state, addBlogPost } = useContext(Context);
+  const { state, addBlogPost, deleteBlogPost } = useContext(Context);
 
   return (
     <View>
       <Button title="Add Post" onPress={addBlogPost} />
       <FlatList
         data={state}
-        keyExtractor={ blogPost => blogPost.title}
-        renderItem={renderBlogList}
+        keyExtractor={ blogPost => blogPost.id}
+        renderItem={({ item }) => {
+          return (
+            <View style={styles.row}>
+              <Text style={styles.title}>{item.title} - {item.id}</Text>
+              <TouchableOpacity onPress={ () => deleteBlogPost(item.id) }>
+                <Feather name="trash" style={styles.icon}/>
+              </TouchableOpacity>
+            </View>
+          )
+        }}
       />
     </View>
   )
