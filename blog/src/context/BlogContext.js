@@ -1,8 +1,9 @@
-import React, { useState, useReducer } from "react";
+// import React, { useState, useReducer } from "react";
+import createDataContext from "./createDataContext";
 
 // Context API is just a system of communicating information -- it is not used as a state management tool
   // does not entirely replace state management libraries -- like redux
-const BlogContext = React.createContext();
+// const BlogContext = React.createContext();
 
 // using 'children' prop provides the BlogContext with any child components that it contains
   // in this case, we are providing <App /> ... (see in App.js)
@@ -19,7 +20,13 @@ const blogReducer = (state, action) => {
   }
 };
 
-export const BlogProvider = ({ children }) => {
+const addBlogPost = (dispatch) => {
+  return () => {
+    dispatch({ type: 'add_blog_post' });
+  };
+};
+
+// export const BlogProvider = ({ children }) => {
 
   // by creating a state variable inside of the BlogProvider, any Screen + its children will receive this state variable
   // const [blogPosts, setBlogPosts] = useState([]);
@@ -31,18 +38,15 @@ export const BlogProvider = ({ children }) => {
 
   // since this Provider handles CRUD operations for Blog Posts, a reducer may be used to centralize logic
     // avoids writing multiple named functions and exports
-  const [blogPosts, dispatch] = useReducer(blogReducer, []);
+  // const [blogPosts, dispatch] = useReducer(blogReducer, []);
 
-  const addBlogPost = () => {
-    dispatch({ type: 'add_blog_post' });
-  };
 
-  return (
+  // return (
     // blogPosts state variable is passed as data in custom object
-    <BlogContext.Provider value={{ data: blogPosts, addBlogPost }}>
-      {children}
-    </BlogContext.Provider>
-  )
-};
+    // <BlogContext.Provider value={{ data: blogPosts, addBlogPost }}>
+    //   {children}
+    // </BlogContext.Provider>
+  // )
+// };
 
-export default BlogContext;
+export const { Context, Provider } = createDataContext(blogReducer, { addBlogPost }, []);
