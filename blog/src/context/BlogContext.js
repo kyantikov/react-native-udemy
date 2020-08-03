@@ -1,13 +1,6 @@
 // import React, { useState, useReducer } from "react";
 import createDataContext from "./createDataContext";
 
-// Context API is just a system of communicating information -- it is not used as a state management tool
-  // does not entirely replace state management libraries -- like redux
-// const BlogContext = React.createContext();
-
-// using 'children' prop provides the BlogContext with any child components that it contains
-  // in this case, we are providing <App /> ... (see in App.js)
-  // that means that any screen inside of the stack navigator will be provided with the BlogContext API that we created
 
 const blogReducer = (state, action) => {
   switch (action.type) {
@@ -25,6 +18,13 @@ const addBlogPost = (dispatch) => {
     dispatch({ type: 'add_blog_post' });
   };
 };
+
+export const { Context, Provider } = createDataContext(blogReducer, { addBlogPost }, []);
+// const BlogContext = React.createContext();
+
+// using 'children' prop provides the BlogContext with any child components that it contains
+  // in this case, we are providing <App /> ... (see in App.js)
+  // that means that any screen inside of the stack navigator will be provided with the BlogContext API that we created
 
 // export const BlogProvider = ({ children }) => {
 
@@ -49,4 +49,3 @@ const addBlogPost = (dispatch) => {
   // )
 // };
 
-export const { Context, Provider } = createDataContext(blogReducer, { addBlogPost }, []);
