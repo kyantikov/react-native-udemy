@@ -7,9 +7,17 @@ const BlogContext = React.createContext();
   // that means that any screen inside of the stack navigator will be provided with the BlogContext API that we created
 
 export const BlogProvider = ({ children }) => {
+  const blogPosts = [
+    {title: 'Blog Post #1'},
+    {title: 'Blog Post #2'},
+    {title: 'Blog Post #3'},
+  ]
+
   return (
-    <BlogContext.Provider>
+    <BlogContext.Provider value={blogPosts}>
       {children}
     </BlogContext.Provider>
   )
 };
+
+export default BlogContext;
