@@ -14,6 +14,9 @@ const blogReducer = (state, action) => {
         }
       ];
     case 'edit_blog_post':
+      return state.map(blogPost => {
+        return (blogPost.id === action.payload.id) ? action.payload : blogPost;
+      });
     case 'delete_blog_post':
       return state.filter(blogPost => blogPost.id !== action.payload);
     default:
@@ -22,18 +25,20 @@ const blogReducer = (state, action) => {
 };
 
 const addBlogPost = (dispatch) => {
-  return (title, content, callback) => {
+  return (title, content, navigateAction) => {
     dispatch({ type: 'add_blog_post', payload: { title, content } });
-    callback();
+    if (navigateAction) {
+      navigateAction();
+    }
   };
 };
 
 const editBlogPost = (dispatch) => {
-  return (id, title, content) => {
-    dispatch({
-      type: 'edit_blog_post',
-      payload: { id, title, content }
-    })
+  return (id, title, content, navigateAction) => {
+    dispatch({type: 'edit_blog_post', payload: { id, title, content }});
+    if (navigateAction) {
+      navigateAction();
+    }
   }
 };
 

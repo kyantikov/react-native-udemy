@@ -8,14 +8,13 @@ const EditScreen = ({ navigation }) => {
   const postId = navigation.getParam('postId');
 
   const { state, editBlogPost } = useContext(Context);
-  const blogPost = state.find(blogPost => blogPost.id = postId);
-
+  const blogPost = state.find(blogPost => blogPost.id === postId);
 
   return (
     <BlogPostForm
       initialValues={{ title: blogPost.title, content: blogPost.content }}
       onSubmit={(title, content) => {
-        editBlogPost(postId, title, content);
+        editBlogPost(postId, title, content, () => navigation.pop());
       }}
     />
   )
