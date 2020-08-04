@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import React, { useContext } from "react";
+import { StyleSheet } from "react-native";
 
 import { Context } from "../context/BlogContext";
+import BlogPostForm from "../components/BlogPostForm";
 
 const EditScreen = ({ navigation }) => {
   const postId = navigation.getParam('postId');
@@ -9,30 +10,18 @@ const EditScreen = ({ navigation }) => {
   const { state } = useContext(Context);
   const blogPost = state.find(blogPost => blogPost.id = postId);
 
-  const [title, setTitle] = useState(blogPost.title);
-  const [content, setContent] = useState(blogPost.content);
 
   return (
-    <View>
-      <Text style={styles.label}>Enter Title:</Text>
-      <TextInput
-        style={styles.input}
-        value={title}
-        onChangeText={ newTitle => setTitle(newTitle) }
-      />
+    <BlogPostForm
+      onSubmit={(title, content) => {
 
-      <Text style={styles.label}>Enter Content:</Text>
-      <TextInput
-        style={styles.input}
-        value={content}
-        onChangeText={ newContent => setContent(newContent) }
-      />
-    </View>
+      }}
+    />
   )
 };
 
 const styles = StyleSheet.create({
-  label: {
+label: {
     fontSize: 20,
     marginVertical: 5,
     textAlign: 'center',
