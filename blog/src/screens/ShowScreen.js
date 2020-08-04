@@ -5,10 +5,10 @@ import { EvilIcons } from '@expo/vector-icons';
 import { Context } from "../context/BlogContext";
 
 const ShowScreen = ({ navigation }) => {
-  const blogId = navigation.getParam('id');
+  const postId = navigation.getParam('postId');
 
   const { state } = useContext(Context);
-  const blogPost = state.find(blogPost => blogPost.id === blogId);
+  const blogPost = state.find(blogPost => blogPost.id === postId);
 
   return (
     <View style={styles.postView}>
@@ -21,7 +21,9 @@ const ShowScreen = ({ navigation }) => {
 ShowScreen.navigationOptions = ({ navigation }) => {
   return {
     headerRight: () => (
-      <TouchableOpacity onPress={ () => navigation.navigate('Edit') }>
+      <TouchableOpacity onPress={() =>
+        navigation.navigate('Edit', { postId: navigation.getParam('postId') })}
+      >
         <EvilIcons name="pencil" size={35} />
       </TouchableOpacity>
     )

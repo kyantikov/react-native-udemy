@@ -16,7 +16,7 @@ const IndexScreen = ({ navigation }) => {
         keyExtractor={ blogPost => blogPost.id}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={ () => navigation.navigate('Show', { id: item.id }) }>
+            <TouchableOpacity onPress={ () => navigation.navigate('Show', { postId: item.id }) }>
               <View style={styles.row}>
                 <Text style={styles.title}>{item.title} - {item.id}</Text>
                 <TouchableOpacity onPress={ () => deleteBlogPost(item.id) }>

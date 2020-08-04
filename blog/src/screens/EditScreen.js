@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const EditScreen = () => {
+const EditScreen = ({ navigation }) => {
+  const postId = navigation.getParam('postId');
+
   return (
     <View>
-      <Text>Edit Screen</Text>
+      <Text>Edit Screen - {postId}</Text>
     </View>
   )
 };
