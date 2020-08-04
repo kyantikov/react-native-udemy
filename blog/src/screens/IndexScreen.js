@@ -1,11 +1,21 @@
 import React, { useContext } from "react";
-import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet,
+  FlatList, Button, TouchableOpacity
+} from "react-native";
 import { Feather } from '@expo/vector-icons'
 
 import { Context } from "../context/BlogContext";
 
 
 const IndexScreen = ({ navigation }) => {
+  navigation.setOptions({
+    headerRight: () => (
+      <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+        <Feather name="plus" size={30} />
+      </TouchableOpacity>
+    ),
+  });
+
   // useContext looks at Context object and access value inside of it
   const { state, deleteBlogPost } = useContext(Context);
 
@@ -29,16 +39,6 @@ const IndexScreen = ({ navigation }) => {
       />
     </View>
   )
-};
-
-IndexScreen.navigationOptions = ({ navigation }) => {
-  return {
-    headerRight: () => (
-      <TouchableOpacity onPress={() => navigation.navigate('Create')}>
-        <Feather name="plus" size={30} />
-      </TouchableOpacity>
-    ),
-  };
 };
 
 const styles = StyleSheet.create({

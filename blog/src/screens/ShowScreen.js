@@ -4,8 +4,18 @@ import { EvilIcons } from '@expo/vector-icons';
 
 import { Context } from "../context/BlogContext";
 
-const ShowScreen = ({ navigation }) => {
-  const postId = navigation.getParam('postId');
+const ShowScreen = ({ navigation, route }) => {
+  navigation.setOptions({
+    headerRight: () => (
+      <TouchableOpacity onPress={() =>
+        navigation.navigate('Edit', { postId: route.params?.postId })}
+      >
+        <EvilIcons name="pencil" size={35} />
+      </TouchableOpacity>
+    )
+  });
+
+  const postId = route.params?.postId;
 
   const { state } = useContext(Context);
   const blogPost = state.find(blogPost => blogPost.id === postId);
@@ -16,18 +26,6 @@ const ShowScreen = ({ navigation }) => {
       <Text style={styles.content}>{blogPost.content}</Text>
     </View>
   )
-};
-
-ShowScreen.navigationOptions = ({ navigation }) => {
-  return {
-    headerRight: () => (
-      <TouchableOpacity onPress={() =>
-        navigation.navigate('Edit', { postId: navigation.getParam('postId') })}
-      >
-        <EvilIcons name="pencil" size={35} />
-      </TouchableOpacity>
-    )
-  }
 };
 
 const styles = StyleSheet.create({
