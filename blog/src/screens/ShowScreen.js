@@ -5,7 +5,14 @@ import { EvilIcons } from '@expo/vector-icons';
 import { Context } from "../context/BlogContext";
 
 const ShowScreen = ({ navigation, route }) => {
+
+  const postId = route.params?.postId;
+
+  const { state } = useContext(Context);
+  const blogPost = state.find(blogPost => blogPost.id === postId);
+
   navigation.setOptions({
+    headerTitle: blogPost.title,
     headerRight: () => (
       <TouchableOpacity onPress={() =>
         navigation.navigate('Edit', { postId: route.params?.postId })}
@@ -15,14 +22,8 @@ const ShowScreen = ({ navigation, route }) => {
     )
   });
 
-  const postId = route.params?.postId;
-
-  const { state } = useContext(Context);
-  const blogPost = state.find(blogPost => blogPost.id === postId);
-
   return (
     <View style={styles.postView}>
-      <Text style={styles.title}>{blogPost.title}</Text>
       <Text style={styles.content}>{blogPost.content}</Text>
     </View>
   )

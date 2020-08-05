@@ -10,10 +10,6 @@ const EditScreen = ({ navigation, route }) => {
   const { state, editBlogPost } = useContext(Context);
   const blogPost = state.find(blogPost => blogPost.id === postId);
 
-  navigation.setOptions({
-    headerTitle: blogPost.title,
-  });
-
   return (
     <BlogPostForm
       initialValues={{ title: blogPost.title, content: blogPost.content }}
