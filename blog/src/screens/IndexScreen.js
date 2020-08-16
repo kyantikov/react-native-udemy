@@ -4,7 +4,8 @@ import { View, Text, StyleSheet,
 } from "react-native";
 import { Feather } from '@expo/vector-icons'
 
-import { Context as BlogContext } from "../context/BlogContext";
+// import { Context as BlogContext } from "../context/BlogContext";
+import BlogContext  from "../context/StateBlogContext";
 import { Context as AuthContext } from '../context/AuthContext';
 
 

@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { EvilIcons } from '@expo/vector-icons';
 
-import { Context } from "../context/BlogContext";
+// import { Context } from "../context/BlogContext";
+import BlogContext  from "../context/StateBlogContext";
 
 const ShowScreen = ({ navigation, route }) => {
 
   const postId = route.params?.postId;
 
-  const { state } = useContext(Context);
+  const { state } = useContext(BlogContext);
   const blogPost = state.find(blogPost => blogPost.id === postId);
 
   navigation.setOptions({
