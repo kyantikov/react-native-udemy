@@ -4,11 +4,18 @@ import { View, Text, StyleSheet,
 } from "react-native";
 import { Feather } from '@expo/vector-icons'
 
-import { Context } from "../context/BlogContext";
+import { Context as BlogContext } from "../context/BlogContext";
+import { Context as AuthContext } from '../context/AuthContext';
 
 
 const IndexScreen = ({ navigation }) => {
+
+  const { signOut } = useContext(AuthContext);
+
   navigation.setOptions({
+    headerLeft: () => (
+      <Button title={'Sign Out'} onPress={signOut} />
+    ),
     headerRight: () => (
       <TouchableOpacity onPress={() => navigation.navigate('Create')}>
         <Feather name="plus" size={30} />
@@ -17,7 +24,7 @@ const IndexScreen = ({ navigation }) => {
   });
 
   // useContext looks at Context object and access value inside of it
-  const { state, deleteBlogPost } = useContext(Context);
+  const { state, deleteBlogPost } = useContext(BlogContext);
 
   return (
     <View>
