@@ -5,7 +5,7 @@ import SignInScreen from "../screens/SignInScreen";
 
 const Stack = createStackNavigator();
 
-export const AuthStack = () => {
+const AuthStack = () => {
   return (
     <Stack.Navigator
       initialRouteName="SignIn"
@@ -17,3 +17,5 @@ export const AuthStack = () => {
     </Stack.Navigator>
   )
 };
+
+export default AuthStack;

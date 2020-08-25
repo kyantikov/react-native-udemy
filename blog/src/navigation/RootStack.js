@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 
 import { Context as AuthContext } from '../context/AuthContext';
-import { BlogStack } from "./BlogStack";
-import { AuthStack } from "./AuthStack";
+import AuthStack from "./AuthStack";
+import MainNavigator from "./MainNavigator";
 
 const RootStack = () => {
 
@@ -12,7 +12,7 @@ const RootStack = () => {
   return (
     <NavigationContainer>
       {state.isSignedIn
-        ? <BlogStack />
+        ? <MainNavigator />
         : <AuthStack />
       }
     </NavigationContainer>
