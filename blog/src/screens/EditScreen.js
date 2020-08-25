@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { StyleSheet } from "react-native";
 
-// import { Context } from "../context/BlogContext";
-import BlogContext  from "../context/StateBlogContext";
+// import { Context as BlogContext } from "../context/BlogContext";
+import BlogContext from "../context/StateBlogContext";
 
 import BlogPostForm from "../components/BlogPostForm";
 
@@ -16,7 +16,8 @@ const EditScreen = ({ navigation, route }) => {
     <BlogPostForm
       initialValues={{ title: blogPost.title, content: blogPost.content }}
       onSubmit={(title, content) => {
-        editBlogPost(postId, title, content, () => navigation.pop());
+        editBlogPost(postId, title, content);
+        navigation.navigate('Index');
       }}
     />
   )

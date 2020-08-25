@@ -27,13 +27,17 @@ export const BlogProvider = ({ children }) => {
   };
 
   const editBlogPost = (id, title, content) => {
-    blogs.map(blogPost => {
-      return (blogPost.id === id) ? { title, content } : blogPost;
+    setBlogs(state => {
+      return state.map(blogPost => {
+        return (blogPost.id === id) ? { id, title, content } : blogPost;
+      });
     });
   };
 
   const deleteBlogPost = (id) => {
-    return blogs.filter(blogPost => blogPost.id !== id);
+    setBlogs(state => {
+      return state.filter(blogPost => blogPost.id !== id);
+    });
   };
 
   return (
